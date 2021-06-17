@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+
+        {% load static %}
+
+        <link rel="shortcut icon" href="{% static 'SSV/images/favicon.ico' %}">
+
+        <!-- App css -->
+        <link href="{% static 'SSV/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'SSV/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'SSV/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body class="authentication-bg">
+
+        <div class="account-pages mt-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card">
+
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center w-75 m-auto">
+                                    <a href="login">
+                                        <span><img src="{% static 'SSV/images/logovote.png' %}" alt="" height="45"></span>
+                                    </a>
+                                    <p class="text-muted mb-4 mt-3">Login for admin panel!!</p>
+                                </div>
+
+                                <form method="POST">
+                                    {% csrf_token %}
+
+                                    <div class="form-group mb-3">
+                                        <label for="Username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" required="" placeholder="Enter your username">
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">                                        
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password" name="password" placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-primary btn-block" type="submit"> Log In </button>
+                                    </div>
+
+                                </form>
+
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted"> <a href="forgot-password" class="text-muted ml-1">Forgot your password?</a></p>                                
+                            </div> <!-- end col -->  
+                            
+                            <div class="col-12 text-center">
+                                <p class="text-muted"> <a href="login" class="text-muted ml-1">Login in as Student</a></p>                                
+                            </div> <!-- end col -->
+                            
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+
+        <!-- App js -->
+        <script src="{% static 'SSV/js/vendor.min.js' %}"></script>
+        <script src="{% static 'SSV/js/app.min.js' %}"></script>
+        
+    </body>
+</html>
